@@ -1,0 +1,187 @@
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+$shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
+
+body
+    font-family: 'IBM Plex Sans', sans-serif
+    font-family: 'Work Sans', sans-serif
+    .container
+        flex-direction: column
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100vw
+        height: 100vh
+        position: relative
+        background-color: #dff6e7
+        .game
+            display: flex
+            align-items: center
+            justify-content: center
+            .result
+                display: grid
+                grid-template-rows: 15% 1fr
+                border-radius: 1rem
+                .name
+                    display: grid
+                    place-items: center
+                    font:
+                        weight: 700
+                        size: 2rem
+                .score
+                    position: relative
+                    top: -3rem
+                    display: grid
+                    place-items: center
+                    font:
+                        size: 5rem
+            .blue,.red
+                width: 9rem
+                height: calc( 100% - 2rem )
+                background-color: black
+            .blue
+                background-color: rgb(15, 67, 146)
+                color: rgb(75, 136, 226)
+            .red
+                background-color: rgb(214 57 42)
+                color: rgb(255 142 132)
+            .main
+                display: grid
+                grid-template-columns: (repeat(3,1fr))
+                gap: 1rem
+                padding: 1rem
+                position: relative
+                overflow: hidden
+                &.r
+                    &::after
+                        content: "RED win"
+                        position: absolute
+                        width: calc(100% - 2rem)
+                        height: calc(100% - 2rem)
+                        background-color: rgba(0, 0, 0, 0.5)
+                        transform: translate(-50%, -50%)
+                        z-index: 2
+                        top: 50%
+                        left: 50%
+                        display: grid
+                        place-items: center
+                        color: #fff
+                        font:
+                            weight: 500
+                            size: 5rem
+                        animation-name: anime
+                        animation-duration: 1.5s
+                        overflow: hidden
+                &.b
+                    &::after
+                        content: "BLUE win"
+                        position: absolute
+                        width: calc(100% - 2rem)
+                        height: calc(100% - 2rem)
+                        background-color: rgba(0, 0, 0, 0.5)
+                        transform: translate(-50%, -50%)
+                        z-index: 2
+                        top: 50%
+                        left: 50%
+                        display: grid
+                        place-items: center
+                        color: #fff
+                        font:
+                            weight: 500
+                            size: 5rem
+                        animation-name: anime
+                        animation-duration: 1.5s
+                        overflow: hidden
+                &.hide
+                    &::after
+                        display: none
+                &.g
+                    &::after
+                        content: "Game Over"
+                        position: absolute
+                        width: calc(100% - 2rem)
+                        height: calc(100% - 2rem)
+                        background-color: rgba(0, 0, 0, 0.5)
+                        transform: translate(-50%, -50%)
+                        z-index: 2
+                        top: 50%
+                        left: 50%
+                        display: grid
+                        place-items: center
+                        color: #fff
+                        font:
+                            weight: 500
+                            size: 5rem
+                        animation-name: anime
+                        animation-duration: 1.5s
+                        overflow: hidden
+                .t
+                    box-shadow: $shadow
+                    width: 10rem
+                    height: 10rem
+                    background: black
+                    position: relative
+                    display: grid
+                    place-items: center
+                    cursor: pointer
+                    font:
+                        size: 9rem
+                        weight: 400
+                    background-color: white
+                    &.o
+                        transition: ease-in-out
+                        background-color: #9cdeff
+                        color: #1048b0
+                    &.x
+                        transition: ease-in-out
+                        background-color: #fbb0af
+                        color: #d00606
+        .control
+            display: flex
+            align-items: center
+            justify-content: space-between
+            width: 49rem
+            .restart
+                width: 24rem
+                height: 3rem
+                background-color: #fff
+                border-radius: .5rem
+                display: flex
+                align-items: center
+                justify-content: center
+                cursor: pointer
+                outline: none
+                border: none
+                font-size: 1.5rem
+                color: #70ba82
+            .reset
+                width: 24rem
+                height: 3rem
+                background-color: #fff
+                border-radius: .5rem
+                display: flex
+                align-items: center
+                justify-content: center
+                cursor: pointer
+                outline: none
+                border: none
+                font-size: 1.5rem
+                color: #70ba82
+
+// Define animation keyframes
+@keyframes anime
+    0%
+        top: 49rem
+    /* Styles at the beginning of the animation */
+
+    50%
+        top: 50%
+    /* Intermediate styles */
+
+    80%
+        top: calc(50% + 1rem)
+    /* Styles at the end of the animation */
+    100%
+        top: 50%
